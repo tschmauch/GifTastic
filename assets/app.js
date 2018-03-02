@@ -42,14 +42,14 @@ $("#submit").on("click", function (event) {
 
 
 // Calling the renderButtons function to display the intial buttons
-renderButtons();		
-		
-		
-		
-		
-		
-		
-		
+renderButtons();
+
+
+
+
+
+
+
 $(document).on("click", ".topic", function () {
 	$('#gifArea').empty();
 	var topic = $(this).attr("data-name");
@@ -76,7 +76,8 @@ $(document).on("click", ".topic", function () {
 				thisGif.attr("data-still", stillImage);
 				thisGif.attr("data-animate", onImage);
 				thisGif.attr("src", stillImage);
-				thisGif.attr("class", 'gifOff');
+				thisGif.attr("data-state", 'still');
+				thisGif.attr("class", 'gif');
 				gifDiv.prepend(p);
 				gifDiv.prepend(thisGif);
 
@@ -85,6 +86,13 @@ $(document).on("click", ".topic", function () {
 		});
 });
 
-$(document).on("click", ".gifOff", function () {
-	this.attr('src', this.attr('data-animate'))
+$(document).on("click", ".gif", function () {
+	if ($(this).attr('data-state') == 'still') {
+		$(this).attr('src', $(this).attr('data-animate'));
+		$(this).attr('data-state', 'active')
+	}
+	else if ($(this).attr('data-state') == 'active') {
+		$(this).attr('src', $(this).attr('data-still'));
+		$(this).attr('data-state', 'still')
+	}
 });
