@@ -38,17 +38,12 @@ $("#submit").on("click", function (event) {
 
 	// Calling renderButtons which handles the processing of our movie array
 	renderButtons();
+	$("#topicInput").val('');
 });
 
 
 // Calling the renderButtons function to display the intial buttons
 renderButtons();
-
-
-
-
-
-
 
 $(document).on("click", ".topic", function () {
 	$('#gifArea').empty();
